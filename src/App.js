@@ -11,7 +11,7 @@ function App() {
 	
 return (
 	
-			<BrowserRouter>
+			<BrowserRouter basename='/photo-gallary'>
 				<Navbar />
 				<Routes>
 					<Route path="*" element={<Navigate to ="/home" />}/>
