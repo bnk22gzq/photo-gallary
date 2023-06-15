@@ -1,0 +1,12 @@
+
+.main-container
+{
+    background-color: #152036;
+    border-top: 2px solid #fff;
+}
+.row {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    padding: 30px;
+}
