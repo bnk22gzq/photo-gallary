@@ -1,5 +1,5 @@
 {
-  "homepage":"https://bnk22gzq.github.io/Home",
+  "homepage": "https://bnk22gzq.github.io/photo-gallary/Home",
   "name": "photo-gallary",
   "version": "0.1.0",
   "private": true,
@@ -17,6 +17,7 @@
     "react-speech-kit": "^3.0.1",
     "react-sticky-header": "^0.2.0",
     "react-stickynode": "^4.1.0",
+    "react-switch": "^7.0.0",
     "styled-components": "^5.3.11",
     "web-vitals": "^2.1.4"
   },
@@ -26,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
