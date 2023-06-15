@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import './footer.css'
+import './Footer.css'
 
 const Footer = () => {
  
   return (
-
-   
   
       <div class='main-container'>
         <div class='row'>
@@ -13,9 +11,6 @@ const Footer = () => {
         </div>
                 
       </div>
-
-
-    
   )
 }
 
