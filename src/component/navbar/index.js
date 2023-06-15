@@ -15,11 +15,11 @@ const Navbar = () => {
     <nav className= "navbar" style={{overflow:'hidden'}}>
       <div className="container">
         <div>
-          <NavLink to='/Home' style={{display:'flex',textDecoration:'none'}}><h2 style={{color:'#F5A425',paddingLeft:'10px',alignSelf:'center'}}>PHOTO </h2><h2 style={{color:'#FFFFFF',paddingLeft:'10px',alignSelf:'center'}}> GALLARY</h2></NavLink>
+          <NavLink to='Home' style={{display:'flex',textDecoration:'none'}}><h2 style={{color:'#F5A425',paddingLeft:'10px',alignSelf:'center'}}>PHOTO </h2><h2 style={{color:'#FFFFFF',paddingLeft:'10px',alignSelf:'center'}}> GALLARY</h2></NavLink>
         
         </div>
         <div  className='login' >
-          <NavLink to='/Login' style={({ isActive }) => isActive ? setisActive(true) : setisActive(false)
+          <NavLink to='Login' style={({ isActive }) => isActive ? setisActive(true) : setisActive(false)
         } ><Login className={isActive? 'loginlogo': ''}/></NavLink>
         </div>
       </div>

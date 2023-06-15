@@ -1,5 +1,5 @@
 import React, { useReducer,useRef,useEffect } from 'react'
-import './Home.css'
+import './index.css'
 import {
   createTheme,
   responsiveFontSizes,
