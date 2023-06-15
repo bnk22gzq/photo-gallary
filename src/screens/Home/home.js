@@ -174,6 +174,7 @@ export default function Home()
                           <button onClick={() => dispatch({ type: "NEXT" })}>›</button>
                         
                 </div>
+                hiiii
          </div> 
         
         
