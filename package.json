@@ -1,6 +1,7 @@
 {
-  "homepage": "https://bnk22gzq.github.io/photo-gallary/Home",
+  
   "name": "photo-gallary",
+  "homepage": "https://bnk22gzq.github.io/photo-gallary",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
-    "react-router-dom": "^6.11.2",
+    "react-router-dom": "^6.13.0",
     "react-scripts": "5.0.1",
     "react-speech-kit": "^3.0.1",
     "react-sticky-header": "^0.2.0",
