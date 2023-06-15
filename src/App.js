@@ -14,7 +14,7 @@ return (
 			<Router>
 				<Navbar />
 			<Routes>
-				<Route path='/Home' element={<Home/> } />
+				<Route path='/' element={<Home/> } />
 				<Route path='/login' element={<Login />} />
 			</Routes>
 				<Footer/>
