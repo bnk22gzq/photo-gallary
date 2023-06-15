@@ -1,13 +1,13 @@
 import React, { useReducer,useRef,useEffect } from 'react'
 import './Home.css'
 import {
-  createMuiTheme,
+  createTheme,
   responsiveFontSizes,
   MuiThemeProvider,
   Typography
 } from "@material-ui/core";
 
-let theme = createMuiTheme();
+let theme = createTheme();
 theme = responsiveFontSizes(theme);
 
 const slides = [
