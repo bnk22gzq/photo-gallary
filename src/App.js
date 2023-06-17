@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Home from './screens/Home';
 import Login from './screens/Login/Login.js';
 import Footer from './component/Footer/Footer.js';
+import PhotoUpload from './screens/PhotoUpload'
 
 
 function App() {
@@ -17,6 +18,8 @@ return (
 					<Route path="*" element={<Navigate to ="/home" />}/>
 					<Route exact path='/home' element={<Home/>}  />
 					<Route exact path='/Login'  element={<Login/>} />
+					<Route exact path='/PhotoUpload'  element={<PhotoUpload/>} />
+
 				</Routes>
 				<Footer/>
 			</BrowserRouter>

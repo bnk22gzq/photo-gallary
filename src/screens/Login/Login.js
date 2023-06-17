@@ -1,7 +1,10 @@
 import React from 'react'
 import { BiLockAlt } from "react-icons/bi";
 import {HiOutlineMail} from "react-icons/hi";
-import './Login.css'
+import './Login.css';
+import { NavLink } from 'react-router-dom';
+
+
 export default function Login()
 {
     return (
@@ -25,10 +28,10 @@ export default function Login()
                         <label for=""><input type="checkbox"/>Remember Me  <a href="#">Forget Password</a></label>
                       
                     </div>
-                    <button>Log in</button>
-                    <div class="register">
+                    <NavLink to='/PhotoUpload' style={{display:'flex',textDecoration:'none'}}><button>Log in</button></NavLink>
+                    {/* <div class="register">
                         <p>Don't have a account <a href="#">Register</a></p>
-                    </div>
+                    </div> */}
                 </form>
             </div>
         </div>

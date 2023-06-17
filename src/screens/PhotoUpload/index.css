@@ -1,0 +1,56 @@
+
+.mainphoto_container
+{
+    padding-top: 80px;
+    background-color: hsl(220, 44%, 15%);
+}
+.PhotoUploadContainer
+{
+   
+   
+    background-image: url('https://images.pexels.com/photos/15312132/pexels-photo-15312132/free-photo-of-close-up-of-green-leaves.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #172238;
+    padding: 120px 0px;
+    opacity: 0.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Upload-button{
+
+    padding-left: 10%;
+    background-color: #f5a425;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    display: inline-block;
+    outline: none;
+    border-radius:0px ;
+    color:#fff;
+    margin: 3%;
+    max-width: fit-content;
+    padding-left: 3%;
+    padding-right: 3%;
+
+  
+}
+
+/* For mobile screens */
+/* @media (max-width: 768px) {
+    .PhotoUploadContainer {
+       flex-direction: column;
+    }
+   
+    .Upload-button {
+        max-width: fit-content;
+        padding-left: 10%;
+    }
+ }  */
+
+.allUploadedphotoes
+{
+    
+}
