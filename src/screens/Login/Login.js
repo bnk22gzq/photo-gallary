@@ -9,6 +9,7 @@ export default function Login()
 {
     return (
            <body>
+         
                <section>
         <div class="form-box">
             <div class="form-value">
@@ -25,13 +26,15 @@ export default function Login()
                         <label for="">Password</label>
                     </div>
                     <div class="forget">
-                        <label for=""><input type="checkbox"/>Remember Me  <a href="#">Forget Password</a></label>
+                        <label for=""><input type="checkbox"/>Remember Me 
+                          {/* <a href="#">Forget Password</a>  */}
+                        </label>
                       
                     </div>
                     <NavLink to='/PhotoUpload' style={{display:'flex',textDecoration:'none'}}><button>Log in</button></NavLink>
-                    {/* <div class="register">
+                   {/* <div class="register">
                         <p>Don't have a account <a href="#">Register</a></p>
-                    </div> */}
+                    </div>  */}
                 </form>
             </div>
         </div>
