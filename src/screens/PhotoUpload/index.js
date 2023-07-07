@@ -1,4 +1,4 @@
-import React, { useRef,useState} from 'react'
+import React, { useEffect, useRef,useState} from 'react'
 import { render } from "react-dom";
 import { storage } from "../../firebase";
 import {ref,uploadBytesResumable, getDownloadURL} from "firebase/storage"
@@ -10,8 +10,12 @@ const  PhotoUpload= () => {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef(null);
 
+  useEffect(()=>{
+    localStorage.setItem('PhotoUploadPage', 'true');
+  });
+
   const handleButtonClick = () => {
-    fileInputRef.current.click();
+     fileInputRef.current.click();
   };
 
   const handleFileChange = (event) => {

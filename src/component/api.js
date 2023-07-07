@@ -8,12 +8,14 @@ const baseURL='https://photogallary-restapi.onrender.com'  //'http://localhost:5
 export const loginUser=async (data)=>{
   try
   {
-    const response=axios.post(`${baseURL}/login`,data);
+    const response=await axios.post(`${baseURL}/login`,data);
     return response;
   }
   catch(error)
   {
+      
       console.log('error...'+error);
+      return error;
   }
 }
 

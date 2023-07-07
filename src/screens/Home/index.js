@@ -6,6 +6,7 @@ import {
   MuiThemeProvider,
   Typography
 } from "@material-ui/core";
+import { useNavigate } from 'react-router-dom';
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
@@ -160,7 +161,17 @@ function Slide({ slide, offset }) {
 export default function Home()
 {
     const [state, dispatch] = useReducer(slidesReducer, initialState);
-    
+    const navigate = useNavigate();
+    useEffect(()=>{
+      const token = localStorage.getItem('accessToken');
+      if (token)
+       {
+        navigate('/PhotoUpload');
+        }
+      });
+
+
+
     return (
       <body>
         <div className='slide' style={{overflow:'hidden', padding: '90px'} } >

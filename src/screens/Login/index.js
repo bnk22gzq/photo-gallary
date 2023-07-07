@@ -2,44 +2,67 @@ import React, { useState } from 'react'
 import { BiLockAlt } from "react-icons/bi";
 import {HiOutlineMail} from "react-icons/hi";
 import './index.css';
-import { NavLink } from 'react-router-dom';
+import photoupload from'../../screens/PhotoUpload'
+import { useNavigate } from 'react-router-dom';
 import {loginUser}from '../../component/api'
-
-
-
-
-
-
+import swal from 'sweetalert';
 
 
 export default function Login()
 {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async(e)=> {
-        e.preventDefault();
-        const response=await loginUser({
-          email,
-          password
-        });
-        console.log('response:',response.data);
+            e.preventDefault();
+            try
+            {
+                const response=await loginUser({
+                    email,
+                    password
+                  });
+              
+                
+                
+                  if (response?.data) {
+                        localStorage.setItem('accessToken', response.data['token']);
+                        localStorage.setItem('user', response.data);
+                        navigate('/PhotoUpload');
+                        
+                  } 
+                  else 
+                  {
+                        if (response.response.data.message === 'User not found')
+                         {
+                           
+                           alert("User not found");
+                            console.log("user not found");
+                           
+                        } 
+                        else if (response.response.data.message === 'Invalid password') 
+                        {
+                           
+                            alert("Invalid password");
+                            console.log("Invalid password");
+                        } 
+                        else 
+                        {
+                            swal("Failed", response.response.data.message, "error");
+                        }
+                  }
+                 
+
+            }
+            catch(error)
+            {
+                console.log(error)
+            }
+           
+        
         
        
-        // if ('token' in response) {
-        //   swal("Success", response.message, "success", {
-        //     buttons: false,
-        //     timer: 2000,
-        //   })
-        //   .then((value) => {
-        //     localStorage.setItem('accessToken', response['token']);
-        //     localStorage.setItem('user', JSON.stringify(response['user']));
-        //     window.location.href = "/profile";
-        //   });
-        // } else {
-        //   swal("Failed", response.message, "error");
-        // }
-      }
+ }
    
     
     return (
@@ -48,7 +71,7 @@ export default function Login()
                <section>
         <div class="form-box">
             <div class="form-value">
-                <form action="" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <h2>Login</h2>
                     <div class="inputbox">
                         <HiOutlineMail className='icon'></HiOutlineMail>

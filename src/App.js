@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Navbar from './component/navbar';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Home from './screens/Home';
@@ -9,6 +8,8 @@ import PhotoUpload from './screens/PhotoUpload'
 
 
 function App() {
+   
+	
 	
 return (
 	
