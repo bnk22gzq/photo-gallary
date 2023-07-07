@@ -64,13 +64,6 @@ const  PhotoUpload= () => {
   }
   };
 
-
-
-
-
-
-
-
   return (
   
   <div class='mainphoto_container'>

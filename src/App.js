@@ -3,8 +3,8 @@ import React from 'react';
 import Navbar from './component/navbar';
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Home from './screens/Home';
-import Login from './screens/Login/Login.js';
-import Footer from './component/Footer/Footer.js';
+import Login from './screens/Login';
+import Footer from './component/Footer';
 import PhotoUpload from './screens/PhotoUpload'
 
 
