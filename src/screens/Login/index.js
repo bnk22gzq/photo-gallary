@@ -26,8 +26,8 @@ export default function Login()
                 
                 
                   if (response?.data) {
-                        localStorage.setItem('accessToken', response.data['token']);
-                        localStorage.setItem('user', response.data);
+                        localStorage.setItem('accessToken', JSON.stringify(response.data['token']));
+                        localStorage.setItem('user', JSON.stringify(response.data));
                         navigate('/PhotoUpload');
                         
                   } 

@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { storage } from "../../firebase";
 import {ref,uploadBytesResumable, getDownloadURL} from "firebase/storage"
 import './index.css'
+import {getPhotoes,uploadphotos} from '../../component/api'
 
 const  PhotoUpload= () => {
   const [images, setImages] = useState([]);
@@ -33,14 +34,16 @@ const  PhotoUpload= () => {
   };
 
   
-  const handleUpload = () => {
+  const handleUpload = async() => {
    
   const imageUrls = [];
-
+    //get photoes from api
+   
+    
   for (const file of images) {
-    const storageRef = ref(storage, `files/${file.name}`);   //change here only for the perticuler user
+    const storageRef = ref(storage, `/${file.name}`);   //change here only for the perticuler user
     const uploadTask = uploadBytesResumable(storageRef, file);
-
+    
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -55,17 +58,28 @@ const  PhotoUpload= () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
-          imageUrls.push(downloadURL);
+          const url=downloadURL;
+          imageUrls.push({url});
 
           // Check if all images have been uploaded
           if (imageUrls.length === images.length) {
             console.log("All images uploaded:", imageUrls);
             // Send the imageUrls array to the backend if needed
           }
+          
+        }).then(async()=>{
+          console.log("upload.........baleee..baleee..balee");
+          const user=JSON.parse(localStorage.getItem('user'));
+          const response=await getPhotoes(user['rfid']); //response.data existing user
+          //console.log('response..',response.data);
+          const merge=[...response.data,...imageUrls]
+         const res=uploadphotos(user['rfid'],merge);
+          console.log('res...',res);
         });
       }
     );
   }
+ 
   };
 
   return (
