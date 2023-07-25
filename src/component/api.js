@@ -1,11 +1,12 @@
 import { getByDisplayValue } from '@testing-library/react';
 import axios from 'axios';
+import { json } from 'react-router-dom';
 
 const baseURL='https://photogallary-restapi.onrender.com'  //'http://localhost:5050'
-
+const token=JSON.parse(localStorage.getItem('accessToken'));
 const config = {
   headers: {
-    'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+    token:`Bearer ${token}`  // Replace with your actual token
   }
 };
 
@@ -45,6 +46,6 @@ export const getPhotoes=async(rfid)=>{
   }
   catch(error)
   {
-
+        console.log(error.response)
   }
 }

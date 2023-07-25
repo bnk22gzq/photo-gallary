@@ -22,9 +22,6 @@ export default function Login()
                     email,
                     password
                   });
-              
-                
-                
                   if (response?.data) {
                         localStorage.setItem('accessToken', JSON.stringify(response.data['token']));
                         localStorage.setItem('user', JSON.stringify(response.data));

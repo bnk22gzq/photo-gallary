@@ -4,6 +4,7 @@ import { storage } from "../../firebase";
 import {ref,uploadBytesResumable, getDownloadURL} from "firebase/storage"
 import './index.css'
 import {getPhotoes,uploadphotos} from '../../component/api'
+import { json } from 'react-router-dom';
 
 const  PhotoUpload= () => {
   const [images, setImages] = useState([]);
@@ -41,9 +42,9 @@ const  PhotoUpload= () => {
    
     
   for (const file of images) {
+    console.log('images.....',images.length);
     const storageRef = ref(storage, `/${file.name}`);   //change here only for the perticuler user
     const uploadTask = uploadBytesResumable(storageRef, file);
-    
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -56,26 +57,22 @@ const  PhotoUpload= () => {
         console.log(error);
       },
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
           console.log("File available at", downloadURL);
           const url=downloadURL;
           imageUrls.push({url});
 
           // Check if all images have been uploaded
           if (imageUrls.length === images.length) {
-            console.log("All images uploaded:", imageUrls);
-            // Send the imageUrls array to the backend if needed
+               console.log("All images uploaded:", imageUrls);
+              const user=JSON.parse(localStorage.getItem('user'));
+              const response=await getPhotoes(user['rfid']); //response.data existing user
+              const photoes=[...response.data,...imageUrls]
+              const res=uploadphotos(user['rfid'],{photoes}); //patch the images in database using REST API
+            
           }
           
-        }).then(async()=>{
-          console.log("upload.........baleee..baleee..balee");
-          const user=JSON.parse(localStorage.getItem('user'));
-          const response=await getPhotoes(user['rfid']); //response.data existing user
-          //console.log('response..',response.data);
-          const merge=[...response.data,...imageUrls]
-         const res=uploadphotos(user['rfid'],merge);
-          console.log('res...',res);
-        });
+        })
       }
     );
   }
