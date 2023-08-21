@@ -1,30 +1,34 @@
 import React, { useEffect, useRef,useState} from 'react'
-import { render } from "react-dom";
 import { storage } from "../../firebase";
 import {ref,uploadBytesResumable, getDownloadURL} from "firebase/storage"
 import './index.css'
 import {getPhotoes,uploadphotos} from '../../component/api'
-import { json } from 'react-router-dom';
+
+
+
+
 
 const  PhotoUpload= () => {
   const [images, setImages] = useState([]);
   const [urls, setUrls] = useState([]);
   const [progress, setProgress] = useState(0);
+  const [Allphotos,setAllPhotos] = useState();
   const fileInputRef = useRef(null);
 
+
+  
   useEffect(()=>{
     localStorage.setItem('PhotoUploadPage', 'true');
+    GetPhotosFromAPI();
   });
-
-  const handleButtonClick = () => {
-     fileInputRef.current.click();
-  };
-
-  const handleFileChange = (event) => {
-    const fileObject = event.target.files[0];
-    // Handle the selected file
-    console.log(fileObject);
-  };
+  const GetPhotosFromAPI=async()=>{
+    const user=JSON.parse(localStorage.getItem('user'));
+    const response=await getPhotoes(user['rfid']);
+    setAllPhotos(response?.data);
+    console.log("all photos",Allphotos);
+   
+   
+  }
 
   const handleChange = (e) => {
     for (let i = 0; i < e.target.files.length; i++) {
@@ -69,6 +73,7 @@ const  PhotoUpload= () => {
               const response=await getPhotoes(user['rfid']); //response.data existing user
               const photoes=[...response.data,...imageUrls]
               const res=uploadphotos(user['rfid'],{photoes}); //patch the images in database using REST API
+              setAllPhotos(photoes);
             
           }
           
@@ -80,7 +85,8 @@ const  PhotoUpload= () => {
   };
 
   return (
-  
+    
+    
   <div class='mainphoto_container'>
       <div class='PhotoUploadContainer'>
           <input
@@ -91,10 +97,17 @@ const  PhotoUpload= () => {
             onChange={handleChange}
           />
           <button className='Upload-button' onClick={handleUpload}>Upload Image</button>
-         
+          
        </div>
+      
       <div class='allUploadedphotoes'>
-
+        {Allphotos?.map((item)=>{
+          // console.log("item",item['url']);
+           return <img src={item['url']} height={200} width={200} style={{margin:'1%'}}/>
+         
+          })
+        }
+        
       </div>
     
     </div>

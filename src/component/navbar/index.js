@@ -5,7 +5,6 @@ import { ReactComponent as Login } from '../../assets/Login.svg'
 import { ReactComponent as Hamburger } from '../../assets/menu.svg'
 import { ReactComponent as Brand } from '../../assets/log_icon.svg'
 
-
 import './index.css'
 
 const Navbar = () => {
@@ -30,7 +29,7 @@ const Navbar = () => {
         
         </div>
         <div  className='login' >
-          {isphotouploadpage?<button onClick={logout}>logout</button>:<NavLink to='/login' style={({ isActive }) => isActive ? setisActive(true) : setisActive(false)
+          {isphotouploadpage?<button onClick={logout} style={{background:'none',color:'white'}}>Logout</button>:<NavLink to='/login' style={({ isActive }) => isActive ? setisActive(true) : setisActive(false)
         } ><Login className={isActive? 'loginlogo': ''}/></NavLink>}
           
         </div>
