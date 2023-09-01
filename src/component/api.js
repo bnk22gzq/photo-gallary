@@ -12,17 +12,16 @@ const config = {
 
 //login user
 export const loginUser=async (data)=>{
-  try
-  {
-    const response=await axios.post(`${baseURL}/login`,data);
-    return response;
-  }
-  catch(error)
-  {
-      
-      console.log('error...'+error);
-      return error;
-  }
+      try
+      {
+        const response=await axios.post(`${baseURL}/login`,data);
+        return response;
+      }
+      catch(error)
+      {
+          console.log('error...'+error);
+          return error;
+      }
 }
 //patch photoes
 export const uploadphotos=async(rfid,data)=>{
@@ -38,14 +37,14 @@ export const uploadphotos=async(rfid,data)=>{
 }
 //get photoes data
 export const getPhotoes=async(rfid)=>{
-  try
-  {
-    const response=await axios.get(`${baseURL}/users/${rfid}`);
-    return response;
+      try
+      {
+        const response=await axios.get(`${baseURL}/users/${rfid}`);
+        return response;
 
-  }
-  catch(error)
-  {
-        console.log(error.response)
-  }
+      }
+      catch(error)
+      {
+            console.log(error.response)
+      }
 }
